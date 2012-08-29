@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Mule Development Kit
+    Copyright 2010-2011 (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:braintree="http://www.mulesoft.org/schema/mule/braintree"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+        http://www.mulesoft.org/schema/mule/braintree http://www.mulesoft.org/schema/mule/braintree/2.0/mule-braintree.xsd">
+
+    <braintree:config name="braintree-main"
+        merchantId="BOB" 
+        publicKey="CHUCK" 
+        privateKey="LARRY" gateway-ref="gateway" requestFactory-ref="requestFactory"/>
+
+    <spring:bean id="gateway" class="org.mockito.Mockito" factory-method="mock">
+        <spring:constructor-arg value="com.braintreegateway.BraintreeGateway"/>
+    </spring:bean>
+
+    <spring:bean id="requestFactory" class="org.mockito.Mockito" factory-method="mock">
+        <spring:constructor-arg value="com.opensky.osis.BraintreeRequestFactory"/>
+    </spring:bean>
+
+
+    <flow name="testFlow">
+        <braintree:clone-transaction config-ref="braintree-main" originalTxId="123" amount-ref="#[groovy:7.5]"/>
+    </flow>
+
+
+    <flow name="testFlowRefund">
+        <braintree:refund config-ref="braintree-main" txId="123" amount-ref="#[groovy:7.5]"/>
+    </flow>
+
+</mule>

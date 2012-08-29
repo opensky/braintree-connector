@@ -1,0 +1,47 @@
+<!-- BEGIN_INCLUDE(braintree:clone-transaction) -->
+<braintree:clone-transaction email-address="bob@bob.com" template="test">
+<!-- END_INCLUDE(braintree:clone-transaction) -->
+
+<!-- BEGIN_INCLUDE(braintree:retrieve-transaction) -->
+<braintree:retrieve-transaction emailAddress="bob@bob.com">
+<!-- END_INCLUDE(braintree:retrieve-transaction) -->
+
+<!-- BEGIN_INCLUDE(braintree:settle) -->
+<braintree:settle id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:settle) -->
+
+<!-- BEGIN_INCLUDE(braintree:void-tx) -->
+<braintree:void-tx id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:void-tx) -->
+
+<!-- BEGIN_INCLUDE(braintree:sale) -->
+<braintree:sale id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:sale) -->
+
+<!-- BEGIN_INCLUDE(braintree:settle) -->
+<braintree:settle id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:settle) -->
+
+<!-- BEGIN_INCLUDE(braintree:capture) -->
+<braintree:capture id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:capture) -->
+
+<!-- BEGIN_INCLUDE(braintree:void-tx) -->
+<braintree:void-tx id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:void-tx) -->
+
+<!-- BEGIN_INCLUDE(braintree:sale) -->
+<braintree:sale id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:sale) -->
+
+<!-- BEGIN_INCLUDE(braintree:auth) -->
+<braintree:auth id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:auth) -->
+
+<!-- BEGIN_INCLUDE(braintree:auth-capture) -->
+<braintree:auth-capture id="bob@bob.com" key="EMAIL">
+<!-- END_INCLUDE(braintree:auth-capture) -->
+
+<!-- BEGIN_INCLUDE(braintree:refund) -->
+<braintree:refund txId="testme" amount="14.3">
+<!-- END_INCLUDE(braintree:refund) -->
